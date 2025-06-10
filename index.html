@@ -28,7 +28,7 @@
 
     <!-- Audio Background -->
     <audio id="bgMusic" loop>
-        <source src="audio/music.mp3" type="audio/mp3">
+        <source src="audio/wedding nasheed.mp3" type="audio/mp3">
     </audio>
 
     <!-- Cover Section -->
@@ -37,7 +37,7 @@
             <div class="bismillah">السلام عليكم ورحمة الله وبركاته</div>
             <div class="islamic-quote">Dengan memohon rahmat dan Ridlo Alloh SWT, kami sekeluarga mengharap dengan hormat kehadiran Bapak/Ibu/Saudara/i dalam rangka pernikahan putra-putri kami</div>
             <h1 class="couple-name">Nabil & Imma</h1>
-            <p class="wedding-date">Sabtu, 15 Juni 2025</p>
+            <p class="wedding-date">Senin Legi, 23 Juni 2025</p>
             
             <button id="openInvitation" class="open-btn">
                 <span>Buka Undangan</span>
@@ -251,7 +251,7 @@
         });
 
         // RSVP Form
-        document.getElementById('submitRSVP').addEventListener('click', function() {
+document.getElementById('submitRSVP').addEventListener('click', function() {
     // Ambil nilai dari form
     const nama = document.getElementById('guestName').value.trim();
     const kehadiran = document.getElementById('attendance').value;
@@ -271,32 +271,32 @@
         return;
     }
     
-    // Buat pesan WhatsApp
-    let message = `*KONFIRMASI KEHADIRAN PERNIKAHAN*\n\n`;
-    message += `👤 *Nama:* ${nama}\n`;
-    message += `✅ *Kehadiran:* ${kehadiran}\n`;
-    message += `👥 *Jumlah Tamu:* ${jumlahTamu} orang\n`;
+    // Buat pesan WhatsApp - format sederhana agar text muncul
+    let message = 'KONFIRMASI KEHADIRAN PERNIKAHAN\n\n';
+    message += 'Nama: ' + nama + '\n';
+    message += 'Kehadiran: ' + kehadiran + '\n';
+    message += 'Jumlah Tamu: ' + jumlahTamu + ' orang\n';
     
     if (ucapan) {
-        message += `💌 *Ucapan & Doa:*\n${ucapan}\n`;
+        message += 'Ucapan dan Doa:\n' + ucapan + '\n';
     }
     
-    message += `\n_Terima kasih atas konfirmasinya! 🙏_`;
+    message += '\nTerima kasih atas konfirmasinya!';
     
-    // Nomor WhatsApp tujuan (ganti dengan nomor yang sesuai)
-    const phoneNumber = '6282332779432'; // Ganti dengan nomor WA yang benar
+    // Nomor WhatsApp tujuan - PERBAIKI: tambahkan 6 di depan
+    const phoneNumber = '6281459016949'; // Sudah diperbaiki formatnya
     
     // Encode pesan untuk URL
     const encodedMessage = encodeURIComponent(message);
     
     // Buat URL WhatsApp
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappURL = 'https://wa.me/' + phoneNumber + '?text=' + encodedMessage;
     
     // Buka WhatsApp
     window.open(whatsappURL, '_blank');
     
     // Optional: Reset form setelah kirim
-    setTimeout(() => {
+    setTimeout(function() {
         if (confirm('RSVP berhasil dikirim! Apakah Anda ingin mengosongkan form?')) {
             document.getElementById('guestName').value = '';
             document.getElementById('attendance').value = '';
@@ -304,7 +304,7 @@
             document.getElementById('wishes').value = '';
         }
     }, 1000);
-});
+}); // <- INI YANG HILANG!
 
 // Optional: Kirim dengan Enter key di textarea
 document.getElementById('wishes').addEventListener('keydown', function(e) {
@@ -312,7 +312,6 @@ document.getElementById('wishes').addEventListener('keydown', function(e) {
         document.getElementById('submitRSVP').click();
     }
 });
-
         // Smooth scroll for better UX
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
