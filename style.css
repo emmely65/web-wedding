@@ -1,72 +1,1237 @@
-:root {
-  --pink: #f14e95;
-  --bg: #0a0a0a;
-  --shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-size: 1.2rem;
-  font-family: "Work Sans", sans-serif;
-  min-height: 2000px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+    /* Updated background to match the floral image */
+    background: url('img/back.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(img/bg-prewed.jpg);
-  z-index: -1;
-  filter: grayscale();
+/* Overlay for better text readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(0.5px);
+    z-index: -1;
 }
 
-.hero {
-  position: relative;
-  min-height: 100vh;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.hero h1,
-.hero h4,
-.hero p {
-  text-shadow: var(--shadow);
+.hidden {
+    display: none;
 }
 
-.hero h1 {
-  font-family: "Sacramento", cursive;
-  font-size: 6rem;
-}
-.hero h4 {
-  font-size: 1.6rem;
-}
-
-.hero p {
-  font-size: 1.4rem;
+/* Floating Leaves Animation */
+.floating-leaves {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.hero a {
-  color: var(--pink);
-  background-color: white;
+.leaf {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: leafFloat 8s infinite linear;
 }
 
-.hero a:hover {
-  background-color: var(--pink);
-  color: white;
+.leaf-1 { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+.leaf-2 { left: 25%; animation-delay: 1s; animation-duration: 10s; }
+.leaf-3 { left: 50%; animation-delay: 2s; animation-duration: 9s; }
+.leaf-4 { left: 75%; animation-delay: 3s; animation-duration: 7s; }
+.leaf-5 { left: 90%; animation-delay: 4s; animation-duration: 11s; }
+
+/* Floating Flowers Animation */
+.floating-flowers {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Media Query */
-/* laptop */
-@media (max-width: 992px) {
-  html {
-    font-size: 75%;
-  }
+.flower {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    animation: flowerFloat 12s infinite linear;
 }
 
-/* tablet */
+.flower-1 { left: 15%; animation-delay: 0s; }
+.flower-2 { left: 40%; animation-delay: 3s; }
+.flower-3 { left: 65%; animation-delay: 6s; }
+.flower-4 { left: 85%; animation-delay: 9s; }
+
+/* Cover Section */
+#cover {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.bismillah {
+    font-family: 'Amiri', serif;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInDown 1s ease-out;
+}
+
+.ornament {
+    font-size: 2rem;
+    margin: 1rem 0;
+    animation: pulse 2s infinite;
+}
+
+.couple-name {
+    position: relative;
+    background: linear-gradient(45deg, #fff, #ffd700, #fff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+    font-size: 5rem;
+}
+
+.wedding-date {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ffd700;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.islamic-quote {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin: 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    animation: fadeInUp 1.4s ease-out;
+}
+
+.quote-source {
+    font-size: 0.9rem;
+    color: #ffd700;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1.6s ease-out;
+}
+
+.open-btn {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #333;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInScale 1.8s ease-out;
+}
+
+.open-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-ornament {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: sparkle 1.5s infinite;
+}
+
+/* Floating Elements */
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: float 6s infinite linear;
+    opacity: 0.7;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 50%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 80%; animation-delay: 4s; }
+
+/* Main Content Sections */
+.section {
+    padding: 80px 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin: 20px 0;
+    border-radius: 20px;
+}
+
+.section.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.couple-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 255, 0.95) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.event-section {
+    background: linear-gradient(135deg, rgba(248, 249, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.info-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.95) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.rsvp-section {
+    background: linear-gradient(135deg, rgba(240, 248, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.closing-section {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+    color: white;
+    backdrop-filter: blur(15px);
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    animation: slideInDown 0.8s ease-out;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.closing-section .section-title h2 {
+    color: white;
+}
+
+/* Couple Info */
+.couple-info {
+    max-width: 700px;
+    margin: 0 auto;
+    animation: slideInUp 0.8s ease-out 0.2s both;
+}
+
+.bride-groom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.person {
+    flex: 1;
+    text-align: center;
+    min-width: 250px;
+    animation: scaleIn 0.8s ease-out 0.4s both;
+}
+
+.photo-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    background: linear-gradient(45deg, #e8f5e8, #d4edda);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 3px solid rgba(144, 238, 144, 0.3);
+}
+
+.photo-frame:hover {
+    transform: scale(1.05);
+}
+
+.photo-placeholder {
+    font-size: 4rem;
+    color: #333;
+}
+
+.person h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.person p {
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.connector {
+    font-size: 3rem;
+    color: #90ee90;
+    font-weight: bold;
+    align-self: center;
+    animation: pulse 2s infinite;
+}
+
+/* Event Cards */
+.events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(144, 238, 144, 0.2);
+    animation: slideInUp 0.8s ease-out 0.3s both;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: 2px solid #90ee90;
+    padding-bottom: 0.5rem;
+}
+
+.event-details p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.icon {
+    font-size: 1.2rem;
+    width: 25px;
+}
+
+/* Info Section Styles */
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.col-md-8, .col-10 {
+    max-width: 100%;
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid rgba(144, 238, 144, 0.2);
+    animation: slideInUp 0.8s ease-out 0.3s both;
+}
+
+.alamat {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #333;
+    line-height: 1.8;
+}
+
+.map-container {
+    margin: 2rem 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    animation: zoomIn 0.8s ease-out 0.5s both;
+}
+
+.btn-map {
+    display: inline-block;
+    background: linear-gradient(45deg, #90ee90, #98fb98);
+    color: #333;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(144, 238, 144, 0.3);
+}
+
+.btn-map:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(144, 238, 144, 0.4);
+    text-decoration: none;
+    color: #333;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+/* RSVP Form */
+.rsvp-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: #8B4513;
+    margin: 20px 0;
+    font-family: 'Great Vibes', cursive;
+}
+
+.ornament {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.rsvp-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+    width: 100%;
+    border: 2px solid #e1e8ed;
+    border-radius: 15px;
+    padding: 15px 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+    outline: none;
+    border-color: #8B4513;
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+.rsvp-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    background: linear-gradient(45deg, #128C7E, #25D366);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+    .rsvp-form {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
+    
+    .submit-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
 }
 
-/* mobile phone */
-@media (max-width: 576px) {
+/* Music Control */
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #90ee90, #98fb98);
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(144, 238, 144, 0.4);
+    transition: all 0.3s ease;
+    animation: musicPulse 2s infinite;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.6);
+}
+
+.islamic-quote {
+    text-align: center;
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.quote-source {
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0.8;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.closing-text {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.closing-text p {
+    margin-bottom: 1.5rem;
+}
+
+.closing-text strong {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.couple-signature {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Floating Symbols */
+.floating-symbol {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: floatUp 5s linear forwards;
+}
+
+/* Keyframes untuk animasi floating */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Footer Tengah Styles */
+.center-footer {
+    margin: 30px 0;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.center-footer .main-text {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.center-footer .designer-text {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.center-footer .designer-text a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.center-footer .designer-text a:hover {
+    text-decoration: underline;
+    color: #ffed4e;
+    transform: scale(1.05);
+}
+
+/* Footer Text Styles */
+.footer-text {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.footer-text .main-text {
+    margin-bottom: 5px;
+}
+
+.footer-text .designer-text a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+.footer-text .designer-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section {
+        padding: 20px 0;
+    }
+    
+    .closing-section {
+        min-height: auto;
+        padding: 40px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .islamic-quote {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 20px;
+    }
+    
+    .quote-source {
+        font-size: 0.8rem;
+    }
+    
+    .closing-text {
+        font-size: 1rem;
+        margin: 1.5rem 0;
+    }
+    
+    .closing-text strong {
+        font-size: 1.1rem;
+    }
+    
+    .couple-signature {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .center-footer {
+        margin: 20px 0;
+        padding: 15px;
+    }
+    
+    .center-footer .main-text {
+        font-size: 0.8rem;
+    }
+    
+    .center-footer .designer-text {
+        font-size: 0.75rem;
+    }
+    
+    .floating-symbol {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .islamic-quote {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+    
+    .closing-text {
+        font-size: 0.95rem;
+    }
+    
+    .couple-signature {
+        font-size: 1rem;
+    }
+    
+    .center-footer {
+        padding: 12px;
+    }
+    
+    .center-footer .main-text {
+        font-size: 0.75rem;
+    }
+    
+    .center-footer .designer-text {
+        font-size: 0.7rem;
+    }
+}
+
+@keyframes flowerFloat {
+    0% {
+        transform: translateY(-100vh) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(25vh) rotate(90deg) translateX(20px);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(-20px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) translateX(20px);
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(0);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+@keyframes musicPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(144, 238, 144, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(144, 238, 144, 0.6);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Additional Interactive Animations */
+.photo-frame {
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.photo-frame:hover::before {
+    animation: shimmer 0.6s ease-in-out;
+    opacity: 1;
+}
+
+.event-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(144, 238, 144, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.event-card:hover::after {
+    left: 100%;
+}
+
+.ornament {
+    animation: rotate 10s linear infinite;
+}
+
+.ornament:hover {
+    animation-duration: 2s;
+}
+
+/* Text Glow Effects */
+.couple-name {
+    position: relative;
+    background: linear-gradient(45deg, #fff, #ffd700, #fff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.section-title h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #90ee90, #98fb98);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.section.animate .section-title h2::after {
+    width: 100%;
+}
+
+/* Button Hover Effects */
+.open-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.open-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.open-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.submit-btn,
+.btn-map {
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before,
+.btn-map::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before,
+.btn-map:hover::before {
+    left: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .couple-name {
+        font-size: 2rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
+    
+    .bride-groom {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .connector {
+        font-size: 2rem;
+        transform: rotate(90deg);
+    }
+    
+    .events {
+        grid-template-columns: 1fr;
+    }
+    
+    .photo-frame {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .music-control {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .floating-leaves,
+    .floating-flowers {
+        display: none; /* Hide on mobile for better performance */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section {
+        padding: 60px 0;
+        margin: 10px 0;
+    }
+    
+    .couple-name {
+        font-size: 1.8rem;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .bismillah {
+        font-size: 1.2rem;
+    }
+    
+    .islamic-quote {
+        font-size: 1rem;
+    }
+    
+    .event-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .floating-leaves,
+    .floating-flowers,
+    .music-control,
+    .floating-hearts {
+        display: none !important;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+        animation: none !important;
+    }
+    
+    body::before {
+        display: none;
+    }
+    
+    body {
+        background: white !important;
+    }
 }
